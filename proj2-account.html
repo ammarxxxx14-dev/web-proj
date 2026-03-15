@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your Apex Auto member dashboard.">
+    <title>My Account — Apex Auto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="proj2.css">
+    <style>
+        .dashboard-wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .dashboard-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--clr-accent), var(--clr-accent2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+            box-shadow: 0 0 0 4px rgba(123, 92, 255, 0.2);
+        }
+
+        .dashboard-header-info h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .dashboard-header-info .member-since {
+            font-size: 0.85rem;
+            color: var(--clr-text-muted);
+        }
+
+        .dashboard-header-info .member-since span {
+            color: var(--clr-accent-glow);
+            font-weight: 500;
+        }
+
+        .member-badge {
+            margin-left: auto;
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            background: rgba(123, 92, 255, 0.12);
+            border: 1px solid var(--clr-border);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--clr-accent-glow);
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .dash-stat {
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .dash-stat:hover {
+            border-color: rgba(123, 92, 255, 0.3);
+        }
+
+        .dash-stat .stat-icon {
+            font-size: 1.6rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .dash-stat .stat-value {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--clr-accent-glow);
+            line-height: 1;
+        }
+
+        .dash-stat .stat-label {
+            font-size: 0.8rem;
+            color: var(--clr-text-muted);
+            margin-top: 0.3rem;
+        }
+
+        .dashboard-section {
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .dashboard-section h3 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .upcoming-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid var(--clr-border);
+        }
+
+        .upcoming-item:last-child {
+            border-bottom: none;
+        }
+
+        .upcoming-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--clr-accent);
+            flex-shrink: 0;
+        }
+
+        .upcoming-item .evt-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .upcoming-item .evt-date {
+            font-size: 0.78rem;
+            color: var(--clr-text-muted);
+            flex-shrink: 0;
+        }
+
+        .settings-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.9rem 0;
+            border-bottom: 1px solid var(--clr-border);
+        }
+
+        .settings-row:last-child {
+            border-bottom: none;
+        }
+
+        .settings-row .settings-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .settings-row .settings-value {
+            font-size: 0.85rem;
+            color: var(--clr-text-muted);
+        }
+
+        .btn-danger {
+            background: rgba(255, 107, 157, 0.1);
+            color: var(--clr-accent3);
+            border: 1px solid rgba(255, 107, 157, 0.2);
+        }
+
+        .btn-danger:hover {
+            background: rgba(255, 107, 157, 0.15);
+            border-color: var(--clr-accent3);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-glow">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+    <canvas id="particles"></canvas>
+
+    <nav class="navbar" id="navbar">
+        <a href="proj2.html" class="nav-logo">APEX AUTO</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="proj2-about.html">About</a></li>
+            <li><a href="proj2-inventory.html">Inventory</a></li>
+            <li><a href="proj2-brands.html">Brands</a></li>
+            <li><a href="proj2-contact.html">Contact</a></li>
+            <li><a href="#" id="logoutNavBtn" class="btn btn-outline">Log Out</a></li>
+        </ul>
+        <div class="nav-settings">
+            <button class="settings-btn" id="settingsGearBtn" aria-label="Settings"
+                onclick="__settingsToggle()">⚙</button>
+            <div class="settings-dropdown" id="settingsDropdown">
+                <div class="settings-dropdown-title">Appearance</div>
+                <div class="theme-toggle-row">
+                    <span class="theme-toggle-label" id="themeLabel">🌙 Dark Mode</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="themeCheckbox" onchange="__themeToggle(this)">
+                        <span class="toggle-track"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="dashboard-wrapper">
+
+        <!-- Header -->
+        <div class="dashboard-header">
+            <div class="dashboard-avatar" id="dashAvatar">?</div>
+            <div class="dashboard-header-info">
+                <h1 id="dashGreeting">Welcome back!</h1>
+                <div class="member-since">Member since <span id="dashJoinDate">—</span></div>
+            </div>
+            <span class="member-badge">✦ Active Member</span>
+        </div>
+
+        <!-- Stats -->
+        <div class="dashboard-grid">
+            <div class="dash-stat">
+                <div class="stat-icon">📅</div>
+                <div class="stat-value">3</div>
+                <div class="stat-label">Inventory RSVPed</div>
+            </div>
+            <div class="dash-stat">
+                <div class="stat-icon">🏅</div>
+                <div class="stat-value">1</div>
+                <div class="stat-label">Workshops Attended</div>
+            </div>
+            <div class="dash-stat">
+                <div class="stat-icon">🤝</div>
+                <div class="stat-value">2</div>
+                <div class="stat-label">Service Appointments Made</div>
+            </div>
+            <div class="dash-stat">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-value">Gold</div>
+                <div class="stat-label">Brandship Tier</div>
+            </div>
+        </div>
+
+        <!-- Upcoming events -->
+        <div class="dashboard-section">
+            <h3>📆 Upcoming Inventory</h3>
+            <div class="upcoming-item">
+                <div class="upcoming-dot"></div>
+                <div class="evt-title">Innovation Summit 2026</div>
+                <div class="evt-date">Mar 22, 2026</div>
+            </div>
+            <div class="upcoming-item">
+                <div class="upcoming-dot" style="background:var(--clr-accent2);"></div>
+                <div class="evt-title">Startup Pitch Night</div>
+                <div class="evt-date">Apr 5, 2026</div>
+            </div>
+            <div class="upcoming-item">
+                <div class="upcoming-dot" style="background:var(--clr-accent3);"></div>
+                <div class="evt-title">Brand Identity Workshop</div>
+                <div class="evt-date">Apr 18, 2026</div>
+            </div>
+            <div style="margin-top:1.25rem;">
+                <a href="proj2-inventory.html" class="btn btn-outline" style="font-size:0.85rem;">Browse all events →</a>
+            </div>
+        </div>
+
+        <!-- Account settings -->
+        <div class="dashboard-section">
+            <h3>⚙️ Account Settings</h3>
+            <div class="settings-row">
+                <div class="settings-label">Username</div>
+                <div class="settings-value" id="dashUsername">—</div>
+            </div>
+            <div class="settings-row">
+                <div class="settings-label">Email</div>
+                <div class="settings-value" id="dashEmail">—</div>
+            </div>
+            <div class="settings-row">
+                <div class="settings-label">Password</div>
+                <div class="settings-value">••••••••</div>
+            </div>
+            <div style="margin-top:1.5rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
+                <button class="btn btn-danger" id="logoutBtn">Log Out</button>
+                <a href="proj2.html" class="btn btn-outline">Back to Home</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="proj2.html" class="footer-brand" style="text-decoration:none;">APEX AUTO</a>
+            <ul class="footer-links">
+                <li><a href="proj2-about.html">About</a></li>
+                <li><a href="proj2-inventory.html">Inventory</a></li>
+                <li><a href="proj2-brands.html">Brands</a></li>
+                <li><a href="proj2-contact.html">Contact</a></li>
+            </ul>
+            <div class="footer-copy">© 2026 Apex Auto. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script src="proj2.js"></script>
+    <script>
+        // ---- Guard: must be logged in ----
+        const session = JSON.parse(localStorage.getItem('elevateSession') || 'null');
+        if (!session || !session.loggedIn) {
+            window.location.href = 'proj2-login.html';
+        } else {
+            // Populate UI
+            const initials = (session.firstName[0] + session.lastName[0]).toUpperCase();
+            document.getElementById('dashAvatar').textContent = initials;
+            document.getElementById('dashGreeting').textContent = `Welcome back, ${session.firstName}! 👋`;
+            document.getElementById('dashUsername').textContent = '@' + session.username;
+            document.getElementById('dashEmail').textContent = session.email;
+            document.title = `${session.firstName}'s Account — Apex Auto`;
+
+            const joined = new Date(session.joinedAt);
+            document.getElementById('dashJoinDate').textContent =
+                joined.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+        }
+
+        // ---- Logout ----
+        function logout() {
+            localStorage.removeItem('elevateSession');
+            window.location.href = 'proj2.html';
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click', logout);
+        document.getElementById('logoutNavBtn').addEventListener('click', e => { e.preventDefault(); logout(); });
+    </script>
+</body>
+
+</html>

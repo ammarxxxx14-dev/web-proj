@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Meet Apex Auto members — read success stories, browse the community directory, and discover how members thrive together.">
+    <title>Brands — Apex Auto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="proj2.css">
+    <style>
+        .brand-card {
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border);
+            border-radius: 24px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .brand-card:hover {
+            border-color: rgba(123, 92, 255, 0.3);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        .brand-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: #fff;
+            margin: 0 auto 1rem;
+            position: relative;
+        }
+
+        .brand-avatar::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            background: inherit;
+            z-index: -1;
+            opacity: 0.3;
+            filter: blur(8px);
+        }
+
+        .brand-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .brand-card .title {
+            font-size: 0.82rem;
+            color: var(--clr-accent-glow);
+            margin-bottom: 0.75rem;
+        }
+
+        .brand-card p {
+            font-size: 0.85rem;
+            color: var(--clr-text-muted);
+            line-height: 1.6;
+        }
+
+        .brand-card .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            padding: 0.2rem 0.7rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            background: rgba(123, 92, 255, 0.1);
+            color: var(--clr-accent-glow);
+            border: 1px solid rgba(123, 92, 255, 0.15);
+        }
+
+        .brands-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .perks-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .perk-item {
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: var(--transition);
+        }
+
+        .perk-item:hover {
+            border-color: rgba(123, 92, 255, 0.3);
+        }
+
+        .perk-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(123, 92, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .perk-item h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .perk-item p {
+            font-size: 0.85rem;
+            color: var(--clr-text-muted);
+            line-height: 1.6;
+        }
+    
+        .brand-model-card {
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border);
+            border-radius: 24px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            gap: 1.5rem;
+            transition: var(--transition);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .brand-model-card:hover {
+            border-color: rgba(230, 57, 70, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+            transform: translateY(-5px);
+        }
+
+        .brand-info {
+            flex: none;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .brand-info h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .brand-info .model-name {
+            font-size: 1rem;
+            color: var(--clr-accent-glow);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .brand-info p {
+            font-size: 0.9rem;
+            color: var(--clr-text-muted);
+            line-height: 1.6;
+        }
+
+        .brand-image-container {
+            width: 100%;
+            height: 220px;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, rgba(20,20,30,0.8), rgba(10,10,15,0.9));
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .brand-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .brand-model-card:hover .brand-image-container img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .brand-models-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-glow">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+    <canvas id="particles"></canvas>
+
+    <nav class="navbar" id="navbar">
+        <a href="proj2.html" class="nav-logo">APEX AUTO</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="proj2-about.html">About</a></li>
+            <li><a href="proj2-inventory.html">Inventory</a></li>
+            <li><a href="proj2-brands.html" class="active">Brands</a></li>
+            <li><a href="proj2-contact.html">Contact</a></li>
+            <li><a href="proj2-login.html" class="btn btn-primary">Join Now</a></li>
+        </ul>
+        <div class="nav-settings">
+            <button class="settings-btn" id="settingsGearBtn" aria-label="Settings"
+                onclick="__settingsToggle()">⚙</button>
+            <div class="settings-dropdown" id="settingsDropdown">
+                <div class="settings-dropdown-title">Appearance</div>
+                <div class="theme-toggle-row">
+                    <span class="theme-toggle-label" id="themeLabel">🌙 Dark Mode</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="themeCheckbox" onchange="__themeToggle(this)">
+                        <span class="toggle-track"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="page-hero">
+        <div>
+            <h1>Our <span class="gradient-text">Brands</span></h1>
+            <p>A curated community of creators, founders, designers, and makers — all driven by the desire to grow and
+                give back.</p>
+        </div>
+    </div>
+
+    
+    <!-- 3D Brand Models -->
+    <section>
+        <div class="section-heading reveal">
+            <div class="tag">Showcase</div>
+            <h2>Iconic Vehicles</h2>
+            <p>Experience our most famous models with unparalleled realism.</p>
+        </div>
+        
+        <div class="brand-models-list" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            
+            <div class="brand-model-card reveal">
+                <div class="brand-info">
+                    <h3>Porsche</h3>
+                    <div class="model-name">911 GT3</div>
+                    <p>The definitive sports car. Rear-engine layout, iconic silhouette, and uncompromising track performance designed for the purist.</p>
+                </div>
+                <div class="brand-image-container">
+                    <img src="assets/porsche.png" alt="Porsche 911 GT3 in dark blue">
+                </div>
+            </div>
+
+            <div class="brand-model-card reveal">
+                <div class="brand-info">
+                    <h3>Ferrari</h3>
+                    <div class="model-name">LaFerrari</div>
+                    <p>The ultimate expression of Ferrari's racing heritage. Raw, visceral, and powered by a legendary hybrid V12.</p>
+                </div>
+                <div class="brand-image-container">
+                    <img src="assets/ferrari.png" alt="Red Ferrari supercar">
+                </div>
+            </div>
+
+            <div class="brand-model-card reveal">
+                <div class="brand-info">
+                    <h3>Lamborghini</h3>
+                    <div class="model-name">Aventador</div>
+                    <p>The poster car of a generation. Wedge-shaped, audacious, and featuring the iconic scissor doors and screaming V12.</p>
+                </div>
+                <div class="brand-image-container">
+                    <img src="assets/lamborghini.png" alt="Yellow Lamborghini">
+                </div>
+            </div>
+
+            <div class="brand-model-card reveal">
+                <div class="brand-info">
+                    <h3>Aston Martin</h3>
+                    <div class="model-name">Vantage</div>
+                    <p>The essence of British grand touring. Timeless design paired with a refined, incredibly powerful biturbo V8.</p>
+                </div>
+                <div class="brand-image-container">
+                    <img src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&q=80&w=800" alt="Aston Martin sports car">
+                </div>
+            </div>
+
+            <div class="brand-model-card reveal">
+                <div class="brand-info">
+                    <h3>McLaren</h3>
+                    <div class="model-name">P1</div>
+                    <p>The gold standard of hypercars. Central driving position inspiration, extreme aerodynamics, and twin-turbo performance.</p>
+                </div>
+                <div class="brand-image-container">
+                    <img src="assets/mclaren.png" alt="Orange McLaren P1 Supercar">
+                </div>
+            </div>
+
+            <div class="brand-model-card reveal">
+                <div class="brand-info">
+                    <h3>Mercedes-AMG</h3>
+                    <div class="model-name">GT Black Series</div>
+                    <p>Affalterbach's masterpiece. A front-mid engine track weapon with aggressive aerodynamics and a flat-plane crank V8.</p>
+                </div>
+                <div class="brand-image-container">
+                    <img src="assets/mercedes.png" alt="Grey Mercedes AMG GT black series">
+                </div>
+            </div>
+
+        </div>
+    </section>
+<!-- Ownership Perks -->
+    <section>
+        <div class="section-heading reveal">
+            <div class="tag">Perks</div>
+            <h2>What Owners Get</h2>
+        </div>
+        <div class="perks-grid">
+            <div class="perk-item reveal">
+                <div class="perk-icon">🏢</div>
+                <div>
+                    <h4>Concierge Service</h4>
+                    <p>24/7 priority support and personalized assistance.</p>
+                </div>
+            </div>
+            <div class="perk-item reveal">
+                <div class="perk-icon">👨‍🏫</div>
+                <div>
+                    <h4>Track Days</h4>
+                    <p>Exclusive invitations to private track events.</p>
+                </div>
+            </div>
+            <div class="perk-item reveal">
+                <div class="perk-icon">🎟️</div>
+                <div>
+                    <h4>VIP Events</h4>
+                    <p>First access to unveilings and luxury rallies.</p>
+                </div>
+            </div>
+            <div class="perk-item reveal">
+                <div class="perk-icon">💰</div>
+                <div>
+                    <h4>Flexible Financing</h4>
+                    <p>Tailored purchasing and leasing options.</p>
+                </div>
+            </div>
+            <div class="perk-item reveal">
+                <div class="perk-icon">📚</div>
+                <div>
+                    <h4>Driving Clinics</h4>
+                    <p>Advanced performance driving instruction.</p>
+                </div>
+            </div>
+            <div class="perk-item reveal">
+                <div class="perk-icon">🌐</div>
+                <div>
+                    <h4>Global Delivery</h4>
+                    <p>Secure worldwide delivery to any location.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta-box reveal">
+            <h2>Join the <span class="gradient-text">Family</span></h2>
+            <p>Explore our collection and discover the thrill of uncompromising performance.</p>
+            <a href="proj2-login.html" class="btn btn-primary btn-lg">✦ View Inventory</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="proj2.html" class="footer-brand" style="text-decoration:none;">APEX AUTO</a>
+            <ul class="footer-links">
+                <li><a href="proj2-about.html">About</a></li>
+                <li><a href="proj2-inventory.html">Inventory</a></li>
+                <li><a href="proj2-brands.html">Brands</a></li>
+                <li><a href="proj2-contact.html">Contact</a></li>
+            </ul>
+            <div class="footer-copy">© 2026 Apex Auto. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script src="proj2.js"></script>
+</body>
+
+</html>

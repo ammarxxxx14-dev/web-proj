@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Log in or create your Apex Auto account to access your dashboard and member benefits.">
+    <title>Login — Apex Auto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="proj2.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .auth-wrapper {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 1.5rem 4rem;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 440px;
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border);
+            border-radius: 28px;
+            padding: 2.75rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--clr-accent), var(--clr-accent2), var(--clr-accent3));
+        }
+
+        .auth-logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--clr-accent), var(--clr-accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-decoration: none;
+        }
+
+        .auth-card h2 {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .auth-card .subtitle {
+            font-size: 0.9rem;
+            color: var(--clr-text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .auth-tabs {
+            display: flex;
+            gap: 0;
+            border-radius: 12px;
+            background: var(--clr-surface-alt);
+            padding: 4px;
+            margin-bottom: 1.75rem;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 0.6rem;
+            border: none;
+            border-radius: 9px;
+            background: transparent;
+            color: var(--clr-text-muted);
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .auth-tab.active {
+            background: var(--clr-surface);
+            color: var(--clr-text);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .auth-panel {
+            display: none;
+        }
+
+        .auth-panel.active {
+            display: block;
+        }
+
+        .field-error {
+            display: block;
+            margin-top: 0.35rem;
+            font-size: 0.78rem;
+            color: var(--clr-accent3);
+        }
+
+        .form-group input.invalid {
+            border-color: var(--clr-accent3);
+            box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.12);
+        }
+
+        .auth-submit {
+            width: 100%;
+            justify-content: center;
+            margin-top: 0.5rem;
+            padding: 0.9rem;
+            font-size: 1rem;
+        }
+
+        .auth-divider {
+            text-align: center;
+            margin: 1.25rem 0;
+            position: relative;
+            font-size: 0.82rem;
+            color: var(--clr-text-muted);
+        }
+
+        .auth-divider::before,
+        .auth-divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: var(--clr-border);
+        }
+
+        .auth-divider::before {
+            left: 0;
+        }
+
+        .auth-divider::after {
+            right: 0;
+        }
+
+        .auth-footer-note {
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--clr-text-muted);
+            margin-top: 1.25rem;
+        }
+
+        .auth-footer-note a {
+            color: var(--clr-accent-glow);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .auth-footer-note a:hover {
+            text-decoration: underline;
+        }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-wrapper input {
+            padding-right: 3rem;
+        }
+
+        .toggle-pw {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--clr-text-muted);
+            font-size: 1rem;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .toggle-pw:hover {
+            color: var(--clr-text);
+        }
+
+        .global-error {
+            background: rgba(255, 107, 157, 0.1);
+            border: 1px solid rgba(255, 107, 157, 0.25);
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            font-size: 0.85rem;
+            color: var(--clr-accent3);
+            margin-bottom: 1rem;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-glow">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+    <canvas id="particles"></canvas>
+
+    <!-- Minimal navbar -->
+    <nav class="navbar" id="navbar">
+        <a href="proj2.html" class="nav-logo">APEX AUTO</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="proj2-about.html">About</a></li>
+            <li><a href="proj2-inventory.html">Inventory</a></li>
+            <li><a href="proj2-brands.html">Brands</a></li>
+            <li><a href="proj2-contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-settings">
+            <button class="settings-btn" id="settingsGearBtn" aria-label="Settings"
+                onclick="__settingsToggle()">⚙</button>
+            <div class="settings-dropdown" id="settingsDropdown">
+                <div class="settings-dropdown-title">Appearance</div>
+                <div class="theme-toggle-row">
+                    <span class="theme-toggle-label" id="themeLabel">🌙 Dark Mode</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="themeCheckbox" onchange="__themeToggle(this)">
+                        <span class="toggle-track"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <a href="proj2.html" class="auth-logo">APEX AUTO</a>
+            <h2>Welcome back</h2>
+            <p class="subtitle">Sign in to your account or create a new one.</p>
+
+            <!-- Tabs -->
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="tabLogin" onclick="switchTab('login')">Sign In</button>
+                <button class="auth-tab" id="tabRegister" onclick="switchTab('register')">Create Account</button>
+            </div>
+
+            <!-- ===== SIGN IN PANEL ===== -->
+            <div class="auth-panel active" id="panelLogin">
+                <div class="global-error" id="loginError"></div>
+                <form id="loginForm" novalidate>
+                    <div class="form-group">
+                        <label for="loginUsername">Username</label>
+                        <input type="text" id="loginUsername" placeholder="your_username" autocomplete="username">
+                        <span class="field-error" id="loginUsernameErr"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="loginPassword" placeholder="••••••••"
+                                autocomplete="current-password">
+                            <button type="button" class="toggle-pw" aria-label="Show password"
+                                onclick="togglePw('loginPassword', this)">👁</button>
+                        </div>
+                        <span class="field-error" id="loginPasswordErr"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary auth-submit">Sign In →</button>
+                </form>
+                <div class="auth-footer-note">
+                    No account yet? <a href="#" onclick="switchTab('register'); return false;">Create one</a>
+                </div>
+            </div>
+
+            <!-- ===== REGISTER PANEL ===== -->
+            <div class="auth-panel" id="panelRegister">
+                <form id="registerForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="regFirst">First Name</label>
+                            <input type="text" id="regFirst" placeholder="Jane" autocomplete="given-name">
+                            <span class="field-error" id="regFirstErr"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="regLast">Last Name</label>
+                            <input type="text" id="regLast" placeholder="Doe" autocomplete="family-name">
+                            <span class="field-error" id="regLastErr"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Email</label>
+                        <input type="email" id="regEmail" placeholder="jane@example.com" autocomplete="email">
+                        <span class="field-error" id="regEmailErr"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="regUsername">Username</label>
+                        <input type="text" id="regUsername" placeholder="jane_doe" autocomplete="username">
+                        <span class="field-error" id="regUsernameErr"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="regPassword" placeholder="Min. 6 characters"
+                                autocomplete="new-password">
+                            <button type="button" class="toggle-pw" aria-label="Show password"
+                                onclick="togglePw('regPassword', this)">👁</button>
+                        </div>
+                        <span class="field-error" id="regPasswordErr"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary auth-submit">Create Account ✦</button>
+                </form>
+                <div class="auth-footer-note">
+                    Already have an account? <a href="#" onclick="switchTab('login'); return false;">Sign in</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="proj2.js"></script>
+    <script>
+        // ---- Redirect if already logged in ----
+        const session = JSON.parse(localStorage.getItem('elevateSession') || 'null');
+        if (session && session.loggedIn) {
+            window.location.href = 'proj2-account.html';
+        }
+
+        // ---- Tab switching ----
+        function switchTab(tab) {
+            document.getElementById('panelLogin').classList.toggle('active', tab === 'login');
+            document.getElementById('panelRegister').classList.toggle('active', tab === 'register');
+            document.getElementById('tabLogin').classList.toggle('active', tab === 'login');
+            document.getElementById('tabRegister').classList.toggle('active', tab === 'register');
+            document.getElementById('loginError').style.display = 'none';
+        }
+
+        // ---- Password visibility ----
+        function togglePw(inputId, btn) {
+            const input = document.getElementById(inputId);
+            const visible = input.type === 'text';
+            input.type = visible ? 'password' : 'text';
+            btn.textContent = visible ? '👁' : '🙈';
+        }
+
+        // ---- Validation helpers ----
+        function setErr(id, errId, msg) {
+            const el = document.getElementById(id);
+            const errEl = document.getElementById(errId);
+            if (msg) { el.classList.add('invalid'); errEl.textContent = msg; }
+            else { el.classList.remove('invalid'); errEl.textContent = ''; }
+            return !msg;
+        }
+
+        ['loginUsername', 'loginPassword', 'regFirst', 'regLast', 'regEmail', 'regUsername', 'regPassword'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.addEventListener('input', () => {
+                el.classList.remove('invalid');
+                const errEl = document.getElementById(id + 'Err');
+                if (errEl) errEl.textContent = '';
+            });
+        });
+
+        // ---- LOGIN ----
+        document.getElementById('loginForm').addEventListener('submit', e => {
+            e.preventDefault();
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            let valid = true;
+            valid = setErr('loginUsername', 'loginUsernameErr', username ? '' : 'Username is required.') && valid;
+            valid = setErr('loginPassword', 'loginPasswordErr', password ? '' : 'Password is required.') && valid;
+            if (!valid) return;
+
+            // Check stored accounts
+            const accounts = JSON.parse(localStorage.getItem('elevateAccounts') || '{}');
+            const account = accounts[username.toLowerCase()];
+
+            if (!account || account.password !== password) {
+                const errBox = document.getElementById('loginError');
+                errBox.textContent = 'Incorrect username or password.';
+                errBox.style.display = 'block';
+                return;
+            }
+
+            localStorage.setItem('elevateSession', JSON.stringify({
+                loggedIn: true,
+                username: username.toLowerCase(),
+                firstName: account.firstName,
+                lastName: account.lastName,
+                email: account.email,
+                joinedAt: account.joinedAt
+            }));
+
+            window.location.href = 'proj2-account.html';
+        });
+
+        // ---- REGISTER ----
+        document.getElementById('registerForm').addEventListener('submit', e => {
+            e.preventDefault();
+            const first = document.getElementById('regFirst').value.trim();
+            const last = document.getElementById('regLast').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const username = document.getElementById('regUsername').value.trim();
+            const password = document.getElementById('regPassword').value;
+            const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            let valid = true;
+            valid = setErr('regFirst', 'regFirstErr', first ? '' : 'First name is required.') && valid;
+            valid = setErr('regLast', 'regLastErr', last ? '' : 'Last name is required.') && valid;
+            valid = setErr('regEmail', 'regEmailErr', emailRx.test(email) ? '' : 'Valid email required.') && valid;
+            valid = setErr('regUsername', 'regUsernameErr', username.length >= 3 ? '' : 'Min. 3 characters.') && valid;
+            valid = setErr('regPassword', 'regPasswordErr', password.length >= 6 ? '' : 'Min. 6 characters.') && valid;
+            if (!valid) return;
+
+            const accounts = JSON.parse(localStorage.getItem('elevateAccounts') || '{}');
+            if (accounts[username.toLowerCase()]) {
+                setErr('regUsername', 'regUsernameErr', 'That username is taken.');
+                return;
+            }
+
+            accounts[username.toLowerCase()] = { firstName: first, lastName: last, email, password, joinedAt: new Date().toISOString() };
+            localStorage.setItem('elevateAccounts', JSON.stringify(accounts));
+
+            localStorage.setItem('elevateSession', JSON.stringify({
+                loggedIn: true, username: username.toLowerCase(),
+                firstName: first, lastName: last, email, joinedAt: new Date().toISOString()
+            }));
+
+            window.location.href = 'proj2-account.html';
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Browse upcoming and past Apex Auto events — summits, workshops, pitch nights, and more.">
+    <title>Inventory — Apex Auto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="proj2.css">
+    <style>
+        .event-detail-card {
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-detail-card:hover {
+            border-color: rgba(123, 92, 255, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .event-detail-card .event-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .event-detail-card .event-meta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .event-detail-card .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            color: var(--clr-text-muted);
+        }
+
+        .event-detail-card .event-description {
+            color: var(--clr-text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .event-detail-card .event-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-bar {
+            max-width: 900px;
+            margin: 0 auto 2.5rem;
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            border: 1px solid var(--clr-border);
+            background: transparent;
+            color: var(--clr-text-muted);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--clr-accent);
+            color: var(--clr-text);
+            background: rgba(123, 92, 255, 0.08);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-glow">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+    <canvas id="particles"></canvas>
+
+    <nav class="navbar" id="navbar">
+        <a href="proj2.html" class="nav-logo">APEX AUTO</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="proj2-about.html">About</a></li>
+            <li><a href="proj2-inventory.html" class="active">Inventory</a></li>
+            <li><a href="proj2-brands.html">Brands</a></li>
+            <li><a href="proj2-contact.html">Contact</a></li>
+            <li><a href="proj2-login.html" class="btn btn-primary">Join Now</a></li>
+        </ul>
+        <div class="nav-settings">
+            <button class="settings-btn" id="settingsGearBtn" aria-label="Settings"
+                onclick="__settingsToggle()">⚙</button>
+            <div class="settings-dropdown" id="settingsDropdown">
+                <div class="settings-dropdown-title">Appearance</div>
+                <div class="theme-toggle-row">
+                    <span class="theme-toggle-label" id="themeLabel">🌙 Dark Mode</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="themeCheckbox" onchange="__themeToggle(this)">
+                        <span class="toggle-track"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="page-hero">
+        <div>
+            <h1>Upcoming <span class="gradient-text">Inventory</span></h1>
+            <p>Explore our collection of meticulously curated sports cars, luxury sedans, and high-performance SUVs.
+            </p>
+        </div>
+    </div>
+
+    <!-- Inventory List -->
+    <section>
+        <div class="filter-bar reveal">
+            <button class="filter-btn active" data-filter="all">All Inventory</button>
+            <button class="filter-btn" data-filter="sports">Sports Cars</button>
+            <button class="filter-btn" data-filter="luxury">Luxury Sedans</button>
+            <button class="filter-btn" data-filter="suv">SUVs</button>
+            <button class="filter-btn" data-filter="supercar">Supercars</button>
+        </div>
+
+        <div class="content-wrapper" id="eventsContainer">
+            <!-- Event 1 -->
+            <div class="event-detail-card reveal" data-category="sports">
+                <div class="event-header">
+                    <div class="event-date">
+                        <div class="day">22</div>
+                        <div class="month">MAR</div>
+                    </div>
+                    <div>
+                        <h3
+                            style="font-family:var(--font-heading); font-size:1.3rem; font-weight:600; margin-bottom:0.25rem;">
+                            2026 Porsche 911 GT3 2026</h3>
+                        <span class="event-tag open">Open</span>
+                    </div>
+                </div>
+                <div class="event-meta">
+                    <div class="meta-item">📍 Showroom Floor</div>
+                    <div class="meta-item">Rear Engine</div>
+                    <div class="meta-item">RWD</div>
+                </div>
+                <p class="event-description">Our flagship annual event. Featuring 12 keynote speakers, hands-on breakout
+                    sessions, a startup showcase, and an evening gala. Network with industry leaders, discover new
+                    ideas, and be inspired by the innovators shaping tomorrow.</p>
+                <div class="event-actions">
+                    <a href="proj2-contact.html" class="btn btn-primary">Order Now</a>
+                    <button class="btn btn-outline">Schedule Test Drive</button>
+                </div>
+            </div>
+
+            <!-- Event 2 -->
+            <div class="event-detail-card reveal" data-category="supercar">
+                <div class="event-header">
+                    <div class="event-date">
+                        <div class="day">05</div>
+                        <div class="month">APR</div>
+                    </div>
+                    <div>
+                        <h3
+                            style="font-family:var(--font-heading); font-size:1.3rem; font-weight:600; margin-bottom:0.25rem;">
+                            2025 Ferrari Roma</h3>
+                        <span class="event-tag open">Open</span>
+                    </div>
+                </div>
+                <div class="event-meta">
+                    <div class="meta-item">📍 Showroom Floor</div>
+                    <div class="meta-item">Front Mid-Engine</div>
+                    <div class="meta-item">RWD</div>
+                </div>
+                <p class="event-description">Present your startup to a panel of angel investors and VCs. Eight teams
+                    will pitch, receive live feedback, and compete for seed funding. Whether you're presenting or
+                    watching, it's an electrifying evening.</p>
+                <div class="event-actions">
+                    <a href="proj2-contact.html" class="btn btn-primary">Inquire Now</a>
+                    <button class="btn btn-outline">View Details</button>
+                </div>
+            </div>
+
+            <!-- Event 3 -->
+            <div class="event-detail-card reveal" data-category="luxury">
+                <div class="event-header">
+                    <div class="event-date">
+                        <div class="day">18</div>
+                        <div class="month">APR</div>
+                    </div>
+                    <div>
+                        <h3
+                            style="font-family:var(--font-heading); font-size:1.3rem; font-weight:600; margin-bottom:0.25rem;">
+                            2024 Mercedes-Benz S-Class</h3>
+                        <span class="event-tag soon">Filling Up</span>
+                    </div>
+                </div>
+                <div class="event-meta">
+                    <div class="meta-item">📍 Showroom Floor</div>
+                    <div class="meta-item">V8 Biturbo</div>
+                    <div class="meta-item">AWD</div>
+                </div>
+                <p class="event-description">The pinnacle of luxury sedans. Experience unparalleled comfort, advanced driver-assistance systems, and an executive rear-seat package.</p>
+                <div class="event-actions">
+                    <a href="proj2-contact.html" class="btn btn-primary">Build Your Own</a>
+                </div>
+            </div>
+
+            <!-- Event 4 -->
+            <div class="event-detail-card reveal" data-category="suv">
+                <div class="event-header">
+                    <div class="event-date">
+                        <div class="day">26</div>
+                        <div class="month">APR</div>
+                    </div>
+                    <div>
+                        <h3
+                            style="font-family:var(--font-heading); font-size:1.3rem; font-weight:600; margin-bottom:0.25rem;">
+                            2025 Aston Martin DBX707</h3>
+                        <span class="event-tag open">Open</span>
+                    </div>
+                </div>
+                <div class="event-meta">
+                    <div class="meta-item">📍 Arriving Soon</div>
+                    <div class="meta-item">707 hp V8</div>
+                    <div class="meta-item">AWD</div>
+                </div>
+                <p class="event-description">The world's most powerful luxury SUV. Uncompromising performance meets British craftsmanship inside a breathtaking silhouette.</p>
+                <div class="event-actions">
+                    <a href="proj2-contact.html" class="btn btn-primary">Inquire</a>
+                </div>
+            </div>
+
+            <!-- Event 5 -->
+            <div class="event-detail-card reveal" data-category="luxury">
+                <div class="event-header">
+                    <div class="event-date">
+                        <div class="day">10</div>
+                        <div class="month">MAY</div>
+                    </div>
+                    <div>
+                        <h3
+                            style="font-family:var(--font-heading); font-size:1.3rem; font-weight:600; margin-bottom:0.25rem;">
+                            2024 McLaren 750S</h3>
+                        <span class="event-tag open">Open</span>
+                    </div>
+                </div>
+                <div class="event-meta">
+                    <div class="meta-item">📍 Showroom Floor</div>
+                    <div class="meta-item">Mid-Engine</div>
+                    <div class="meta-item">RWD</div>
+                </div>
+                <p class="event-description">Pure driver engagement. The lightest and most powerful series-production McLaren ever built.</p>
+                <div class="event-actions">
+                    <a href="proj2-contact.html" class="btn btn-primary">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta-box reveal">
+            <h2>Looking for Something <span class="gradient-text">Specific</span>?</h2>
+            <p>Our sourcing team has access to private collections worldwide. Let us find your exact dream configuration.</p>
+            <a href="proj2-login.html" class="btn btn-primary btn-lg">✦ Get in Touch</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="proj2.html" class="footer-brand" style="text-decoration:none;">APEX AUTO</a>
+            <ul class="footer-links">
+                <li><a href="proj2-about.html">About</a></li>
+                <li><a href="proj2-inventory.html">Inventory</a></li>
+                <li><a href="proj2-brands.html">Brands</a></li>
+                <li><a href="proj2-contact.html">Contact</a></li>
+            </ul>
+            <div class="footer-copy">© 2026 Apex Auto. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script src="proj2.js"></script>
+    <script>
+        // Event filter logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const eventCards = document.querySelectorAll('.event-detail-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+
+                eventCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = '';
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        requestAnimationFrame(() => {
+                            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        });
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

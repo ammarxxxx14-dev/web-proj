@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Apex Auto - Where ambition meets community. Join an exclusive network of creators, innovators, and leaders.">
+    <title>Apex Auto — Premium Dealership</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="proj2.css">
+</head>
+
+<body>
+
+    <!-- Background Effects -->
+    <div class="bg-glow">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+    <canvas id="particles"></canvas>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <a href="proj2.html" class="nav-logo">APEX AUTO</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="proj2-about.html">About</a></li>
+            <li><a href="proj2-inventory.html">Inventory</a></li>
+            <li><a href="proj2-brands.html">Brands</a></li>
+            <li><a href="proj2-contact.html">Contact</a></li>
+            <li><a href="proj2-contact.html" class="btn btn-primary">Book Test Drive</a></li>
+        </ul>
+        <div class="nav-settings">
+            <button class="settings-btn" id="settingsGearBtn" aria-label="Settings"
+                onclick="__settingsToggle()">⚙</button>
+            <div class="settings-dropdown" id="settingsDropdown">
+                <div class="settings-dropdown-title">Appearance</div>
+                <div class="theme-toggle-row">
+                    <span class="theme-toggle-label" id="themeLabel">🌙 Dark Mode</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="themeCheckbox" onchange="__themeToggle(this)">
+                        <span class="toggle-track"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="hero"
+        style="min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:8rem 2rem 4rem;">
+        <div style="max-width:800px;">
+            <div class="hero-badge"
+                style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.4rem 1rem; border-radius:50px; background:rgba(123,92,255,0.1); border:1px solid var(--clr-border); font-size:0.8rem; font-weight:500; color:var(--clr-accent-glow); margin-bottom:1.5rem; opacity:0; animation:fadeUp 0.8s 0.2s forwards;">
+                <span
+                    style="width:6px;height:6px;border-radius:50%;background:var(--clr-accent2);animation:pulse 2s infinite;"></span>
+                Explore our 2026 Premium Vehicle Lineup
+            </div>
+            <h1
+                style="font-family:var(--font-heading); font-size:clamp(2.8rem,7vw,5rem); font-weight:800; line-height:1.1; letter-spacing:-2px; margin-bottom:1.5rem; opacity:0; animation:fadeUp 0.8s 0.4s forwards;">
+                Drive Your<br><span class="gradient-text">Dream Car</span>
+            </h1>
+            <p
+                style="font-size:1.15rem; color:var(--clr-text-muted); max-width:550px; margin:0 auto 2.5rem; line-height:1.7; opacity:0; animation:fadeUp 0.8s 0.6s forwards;">
+                Discover an exclusive collection of high-performance and luxury vehicles. Book a test drive, customize your build, and elevate your driving experience.
+            </p>
+            <div
+                style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; opacity:0; animation:fadeUp 0.8s 0.8s forwards;">
+                <a href="proj2-inventory.html" class="btn btn-primary btn-lg">✦ View Inventory</a>
+                <a href="proj2-about.html" class="btn btn-outline btn-lg">Learn More →</a>
+            </div>
+            <div class="hero-stats stats-bar" style="margin-top:4rem; opacity:0; animation:fadeUp 0.8s 1s forwards;">
+                <div class="stat-item">
+                    <div class="number" data-target="480" data-suffix="+">0</div>
+                    <div class="label">Brands</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number" data-target="52" data-suffix="">0</div>
+                    <div class="label">Inventory / Year</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number" data-target="12" data-suffix="">0</div>
+                    <div class="label">Partner Brands</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Features Preview -->
+    <section id="features">
+        <div class="section-heading reveal">
+            <div class="tag">Why Apex Auto?</div>
+            <h2>Everything you need to hit the road</h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card reveal">
+                <div class="feature-icon purple">🤝</div>
+                <h3>Premium Selection</h3>
+                <p>Access an exclusive inventory of supercars, luxury sedans, and high-performance SUVs curated for driving enthusiasts.</p>
+            </div>
+            <div class="feature-card reveal">
+                <div class="feature-icon teal">🎯</div>
+                <h3>Bespoke Customization</h3>
+                <p>Tailor your dream car with factory-direct customization options. Expert advisors will guide you through every choice.</p>
+            </div>
+            <div class="feature-card reveal">
+                <div class="feature-icon pink">🚀</div>
+                <h3>White-Glove Delivery</h3>
+                <p>Experience seamless purchasing and white-glove home delivery, ensuring your new vehicle arrives in pristine condition.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Inventory Preview -->
+    <section>
+        <div class="section-heading reveal">
+            <div class="tag">Featured Vehicles</div>
+            <h2>Upcoming Inventory</h2>
+            <p>Don't miss out on our latest stock — <a href="proj2-inventory.html" style="color:var(--clr-accent); text-decoration:none;">View all vehicles →</a></p>
+        </div>
+        <div class="events-container">
+            <div class="event-card reveal">
+                <div class="event-date">
+                    <div class="day">V8</div><div class="month">Engine</div>
+                </div>
+                <div class="event-info">
+                    <h3>2026 Porsche 911 GT3</h3>
+                    <p>502 hp | 0-60 in 3.2s | PDK Transmission</p>
+                </div>
+                <span class="event-tag open">Available</span>
+            </div>
+            <div class="event-card reveal">
+                <div class="event-date">
+                    <div class="day">V12</div><div class="month">Engine</div>
+                </div>
+                <div class="event-info">
+                    <h3>2025 Ferrari Roma</h3>
+                    <p>612 hp | 0-60 in 3.4s | 8-Speed Dual-Clutch</p>
+                </div>
+                <span class="event-tag open">Available</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Preview -->
+    <section>
+        <div class="section-heading reveal">
+            <div class="tag">Client Stories</div>
+            <h2>What our drivers say</h2>
+            <p>Hear from our community — <a href="proj2-brands.html"
+                    style="color:var(--clr-accent); text-decoration:none;">view all brands →</a></p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <blockquote>"Apex Auto delivered absolute perfection. The buying process was incredibly smooth, and my new GT3 was delivered right to my driveway."</blockquote>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar" style="background:linear-gradient(135deg,#7b5cff,#00d4aa);">A</div>
+                    <div>
+                        <div class="name">Amira Chen</div>
+                        <div class="role">Porsche Enthusiast</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <blockquote>"The detailing and post-sale support are unmatched. They truly care about the cars and their clients."</blockquote>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar" style="background:linear-gradient(135deg,#ff6b9d,#fbbf24);">J</div>
+                    <div>
+                        <div class="name">Jordan Parker</div>
+                        <div class="role">Car Collector</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="testimonial-stars">★★★★★</div>
+                <blockquote>"By far the best dealership experience I've ever had. No pressure, absolute transparency, and a curated selection of stunning vehicles."</blockquote>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar" style="background:linear-gradient(135deg,#00d4aa,#0ea5e9);">R</div>
+                    <div>
+                        <div class="name">Riley Nakamura</div>
+                        <div class="role">Ferrari Owner</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta-box reveal">
+            <h2>Ready to <span class="gradient-text">Drive</span>?</h2>
+            <p>Browse our premier selection of vehicles or custom order your dream build today.</p>
+            <a href="proj2-inventory.html" class="btn btn-primary btn-lg">✦ Apply for Brandship</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="proj2.html" class="footer-brand" style="text-decoration:none;">APEX AUTO</a>
+            <ul class="footer-links">
+                <li><a href="proj2-about.html">About</a></li>
+                <li><a href="proj2-inventory.html">Inventory</a></li>
+                <li><a href="proj2-brands.html">Brands</a></li>
+                <li><a href="proj2-contact.html">Contact</a></li>
+            </ul>
+            <div class="footer-copy">© 2026 Apex Auto. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script src="proj2.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Learn about Apex Auto — our mission, values, history, and the team driving the community forward.">
+    <title>About — Apex Auto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="proj2.css">
+</head>
+
+<body>
+
+    <div class="bg-glow">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+    <canvas id="particles"></canvas>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <a href="proj2.html" class="nav-logo">APEX AUTO</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="proj2-about.html" class="active">About</a></li>
+            <li><a href="proj2-inventory.html">Inventory</a></li>
+            <li><a href="proj2-brands.html">Brands</a></li>
+            <li><a href="proj2-contact.html">Contact</a></li>
+            <li><a href="proj2-login.html" class="btn btn-primary">Join Now</a></li>
+        </ul>
+        <div class="nav-settings">
+            <button class="settings-btn" id="settingsGearBtn" aria-label="Settings"
+                onclick="__settingsToggle()">⚙</button>
+            <div class="settings-dropdown" id="settingsDropdown">
+                <div class="settings-dropdown-title">Appearance</div>
+                <div class="theme-toggle-row">
+                    <span class="theme-toggle-label" id="themeLabel">🌙 Dark Mode</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="themeCheckbox" onchange="__themeToggle(this)">
+                        <span class="toggle-track"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <div>
+            <h1>Our <span class="gradient-text">Story</span></h1>
+            <p>Founded in 2019, Apex Auto has grown from a small meetup group into one of the most vibrant professional
+                communities in the country.</p>
+        </div>
+    </div>
+
+    <!-- Mission & Values -->
+    <section>
+        <div class="section-heading reveal">
+            <div class="tag">Our Foundation</div>
+            <h2>Mission & Values</h2>
+        </div>
+        <div class="info-grid" style="max-width:1000px; margin:0 auto;">
+            <div class="info-block reveal">
+                <h3>🎯 Our Mission</h3>
+                <p>To create a thriving ecosystem where ambitious individuals connect, learn, and grow together —
+                    breaking barriers and building bridges across industries.</p>
+            </div>
+            <div class="info-block reveal">
+                <h3>💡 Integrity First</h3>
+                <p>We believe in pushing boundaries. Every event, workshop, and initiative is designed to challenge
+                    conventional thinking and spark new ideas.</p>
+            </div>
+            <div class="info-block reveal">
+                <h3>🌍 Inclusive by Design</h3>
+                <p>Diversity isn't a checkbox — it's our strength. We actively cultivate a space where every voice
+                    matters and every perspective enriches the collective.</p>
+            </div>
+            <div class="info-block reveal">
+                <h3>🤝 Performance Over Competition</h3>
+                <p>We rise by lifting others. Our culture celebrates collaboration, mutual support, and shared success
+                    above individual achievement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section style="padding-top:0;">
+        <div class="stats-bar reveal">
+            <div class="stat-item">
+                <div class="number" data-target="480" data-suffix="+">0</div>
+                <div class="label">Active Brands</div>
+            </div>
+            <div class="stat-item">
+                <div class="number" data-target="12" data-suffix="">0</div>
+                <div class="label">City Chapters</div>
+            </div>
+            <div class="stat-item">
+                <div class="number" data-target="200" data-suffix="+">0</div>
+                <div class="label">Inventory Hosted</div>
+            </div>
+            <div class="stat-item">
+                <div class="number" data-target="35" data-suffix="">0</div>
+                <div class="label">Startups Launched</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section>
+        <div class="section-heading reveal">
+            <div class="tag">How We Grew</div>
+            <h2>Our Journey</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="year">2019</div>
+                <h3>The Spark</h3>
+                <p>Started as a monthly meetup of 15 friends passionate about technology and entrepreneurship in a small
+                    coffee shop.</p>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="year">2020</div>
+                <h3>Going Virtual</h3>
+                <p>Pivoted to online events, growing our community to 100+ members across the country through virtual
+                    workshops and webinars.</p>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="year">2021</div>
+                <h3>First Official Chapter</h3>
+                <p>Launched our first official chapter with a dedicated co-working space, mentorship program, and
+                    structured weekly events.</p>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="year">2022</div>
+                <h3>National Expansion</h3>
+                <p>Expanded to 5 cities with the launch of regional chapters. Hosted our first Integrity Summit with
+                    500+ attendees.</p>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="year">2024</div>
+                <h3>The Launchpad Program</h3>
+                <p>Introduced our startup incubator, helping 20 member-led ventures secure funding and mentorship from
+                    industry leaders.</p>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="year">2026</div>
+                <h3>Today & Beyond</h3>
+                <p>480+ members, 12 chapters, and a vibrant ecosystem of creators, builders, and innovators shaping the
+                    future together.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Experts -->
+    <section>
+        <div class="section-heading reveal">
+            <div class="tag">The Team</div>
+            <h2>Meet Our Leadership</h2>
+        </div>
+        <div class="team-grid">
+            <div class="team-card reveal">
+                <div class="team-avatar" style="background:linear-gradient(135deg,#7b5cff,#00d4aa);">SK</div>
+                <h3>Sarah Kim</h3>
+                <div class="role">Founder & President</div>
+                <p>Serial entrepreneur with a passion for building communities that transform lives.</p>
+            </div>
+            <div class="team-card reveal">
+                <div class="team-avatar" style="background:linear-gradient(135deg,#ff6b9d,#fbbf24);">MR</div>
+                <h3>Marcus Rivera</h3>
+                <div class="role">VP of Programs</div>
+                <p>Design thinker and educator. Curates our workshops, panels, and summit experiences.</p>
+            </div>
+            <div class="team-card reveal">
+                <div class="team-avatar" style="background:linear-gradient(135deg,#00d4aa,#0ea5e9);">LP</div>
+                <h3>Lena Petrov</h3>
+                <div class="role">Head of Performance</div>
+                <p>Connects people and ideas. Leads member onboarding, mentorship, and engagement.</p>
+            </div>
+            <div class="team-card reveal">
+                <div class="team-avatar" style="background:linear-gradient(135deg,#a78bfa,#ff6b9d);">DT</div>
+                <h3>David Torres</h3>
+                <div class="role">Director of Partnerships</div>
+                <p>Builds bridges with academia, industry, and investors to expand our ecosystem.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta-box reveal">
+            <h2>Be Part of the <span class="gradient-text">Story</span></h2>
+            <p>Every great community is defined by its members. Write the next chapter with us.</p>
+            <a href="proj2-login.html" class="btn btn-primary btn-lg">✦ Apply to Join</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="proj2.html" class="footer-brand" style="text-decoration:none;">APEX AUTO</a>
+            <ul class="footer-links">
+                <li><a href="proj2-about.html">About</a></li>
+                <li><a href="proj2-inventory.html">Inventory</a></li>
+                <li><a href="proj2-brands.html">Brands</a></li>
+                <li><a href="proj2-contact.html">Contact</a></li>
+            </ul>
+            <div class="footer-copy">© 2026 Apex Auto. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script src="proj2.js"></script>
+</body>
+
+</html>

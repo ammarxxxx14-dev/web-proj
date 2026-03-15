@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Contact Apex Auto — reach out, ask questions, or apply for membership. We'd love to hear from you.">
+    <title>Contact — Apex Auto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="proj2.css">
+    <style>
+        /* ---- FAQ Accordion ---- */
+        .faq-section {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: border-color var(--transition);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(123, 92, 255, 0.3);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 1.4rem 1.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--clr-text);
+            cursor: pointer;
+            text-align: left;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            color: var(--clr-accent-glow);
+        }
+
+        .faq-chevron {
+            font-size: 0.85rem;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            color: var(--clr-accent);
+        }
+
+        .faq-item.open .faq-chevron {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            padding: 0 1.75rem;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+            padding: 0 1.75rem 1.4rem;
+        }
+
+        .faq-answer p {
+            color: var(--clr-text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ---- Social Links ---- */
+        .social-links {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            border: 1px solid var(--clr-border);
+            background: transparent;
+            color: var(--clr-text-muted);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            border-color: var(--clr-accent);
+            color: var(--clr-text);
+            background: rgba(123, 92, 255, 0.08);
+        }
+
+        /* ---- Inline form feedback ---- */
+        .field-error {
+            display: block;
+            margin-top: 0.35rem;
+            font-size: 0.78rem;
+            color: var(--clr-accent3);
+        }
+
+        .form-group input.invalid,
+        .form-group textarea.invalid,
+        .form-group select.invalid {
+            border-color: var(--clr-accent3);
+            box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.12);
+        }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .form-success .success-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-success h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-success p {
+            color: var(--clr-text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ---- Map placeholder ---- */
+        .map-placeholder {
+            max-width: 1000px;
+            margin: 0 auto;
+            height: 280px;
+            border-radius: 20px;
+            border: 1px solid var(--clr-border);
+            background: var(--clr-surface);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            color: var(--clr-text-muted);
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-placeholder::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 30% 50%, rgba(123, 92, 255, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 50%, rgba(0, 212, 170, 0.06) 0%, transparent 60%);
+        }
+
+        .map-icon {
+            font-size: 2.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-glow">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+    <canvas id="particles"></canvas>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <a href="proj2.html" class="nav-logo">APEX AUTO</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="proj2-about.html">About</a></li>
+            <li><a href="proj2-inventory.html">Inventory</a></li>
+            <li><a href="proj2-brands.html">Brands</a></li>
+            <li><a href="proj2-contact.html" class="active">Contact</a></li>
+            <li><a href="proj2-login.html" class="btn btn-primary">Join Now</a></li>
+        </ul>
+        <div class="nav-settings">
+            <button class="settings-btn" id="settingsGearBtn" aria-label="Settings"
+                onclick="__settingsToggle()">⚙</button>
+            <div class="settings-dropdown" id="settingsDropdown">
+                <div class="settings-dropdown-title">Appearance</div>
+                <div class="theme-toggle-row">
+                    <span class="theme-toggle-label" id="themeLabel">🌙 Dark Mode</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="themeCheckbox" onchange="__themeToggle(this)">
+                        <span class="toggle-track"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <div>
+            <h1>Get in <span class="gradient-text">Touch</span></h1>
+            <p>Questions, partnerships, event ideas, or just want to say hello — we're always happy to hear from you.
+            </p>
+        </div>
+    </div>
+
+    <!-- Contact Grid -->
+    <section>
+        <div class="contact-grid reveal">
+
+            <!-- Left: Info -->
+            <div class="contact-info-section">
+                <h3>Let's connect</h3>
+                <p>Whether you're curious about membership, want to collaborate on an event, or have a partnership
+                    proposal — reach out and we'll get back to you within 24 hours.</p>
+
+                <div class="contact-detail">
+                    <div class="icon">📧</div>
+                    <div class="info">
+                        <div class="label">Email</div>
+                        <div class="value">sales@apexauto.com</div>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="icon">📞</div>
+                    <div class="info">
+                        <div class="label">Phone</div>
+                        <div class="value">+1 (555) 012-3456</div>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="icon">📍</div>
+                    <div class="info">
+                        <div class="label">Showroom</div>
+                        <div class="value">42 Innovation Drive, Suite 800<br>San Francisco, CA 94103</div>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="icon">🕐</div>
+                    <div class="info">
+                        <div class="label">Office Hours</div>
+                        <div class="value">Mon – Fri, 9 AM – 6 PM (PT)</div>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" class="social-link">𝕏 Twitter</a>
+                    <a href="#" class="social-link">in LinkedIn</a>
+                    <a href="#" class="social-link">▶ Instagram</a>
+                    <a href="#" class="social-link">💬 Discord</a>
+                </div>
+            </div>
+
+            <!-- Right: Form -->
+            <div class="contact-form" id="contactFormWrapper">
+                <div id="contactFormInner">
+                    <h3
+                        style="font-family:var(--font-heading); font-size:1.2rem; font-weight:600; margin-bottom:1.5rem;">
+                        Send us a message</h3>
+
+                    <form id="contactForm" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" placeholder="Jane" autocomplete="given-name">
+                                <span class="field-error" id="firstNameErr"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" placeholder="Doe" autocomplete="family-name">
+                                <span class="field-error" id="lastNameErr"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="jane@example.com" autocomplete="email">
+                            <span class="field-error" id="emailErr"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject">
+                                <option value="">Select a subject…</option>
+                                <option value="membership">Brandship Inquiry</option>
+                                <option value="events">Inventory & Partnerships</option>
+                                <option value="press">Press & Media</option>
+                                <option value="support">Support</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <span class="field-error" id="subjectErr"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" placeholder="Tell us what's on your mind…"></textarea>
+                            <span class="field-error" id="messageErr"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary"
+                            style="width:100%; justify-content:center; padding:0.85rem;">
+                            Send Inquiry ✦
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Success state -->
+                <div class="form-success" id="formSuccess">
+                    <div class="success-icon">🎉</div>
+                    <h3>Message sent!</h3>
+                    <p>Thanks for reaching out. We'll get back to you within 24 hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map placeholder -->
+    <section style="padding-top:0;">
+        <div class="map-placeholder reveal">
+            <div class="map-icon">📍</div>
+            <span>42 Innovation Drive, Suite 800 — San Francisco, CA 94103</span>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+        <div class="section-heading reveal">
+            <div class="tag">FAQ</div>
+            <h2>Common Questions</h2>
+        </div>
+        <div class="faq-section">
+            <div class="faq-item reveal">
+                <button class="faq-question" aria-expanded="false">
+                    How do I apply for membership?
+                    <span class="faq-chevron">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Click the "Join Now" button in the navigation bar or any "Become a Member" button across the
+                        site. You'll be taken to our login page where you can create your account and start the
+                        membership process.</p>
+                </div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-question" aria-expanded="false">
+                    Is there a membership fee?
+                    <span class="faq-chevron">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <p>We offer tiered membership options to fit different budgets and goals. Our community tier is
+                        completely free, while our Pro and Founding Member tiers unlock premium perks like co-working
+                        access, mentorship, and event priority.</p>
+                </div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-question" aria-expanded="false">
+                    Can I attend events without being a member?
+                    <span class="faq-chevron">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes! Many of our large events like the Innovation Summit are open to the public. Brands,
+                        however, receive early access, discounted tickets, and exclusive access to member-only workshops
+                        and socials.</p>
+                </div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-question" aria-expanded="false">
+                    How do I become a speaker or partner?
+                    <span class="faq-chevron">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <p>We love collaborating with speakers, brands, and organizations that align with our mission. Use
+                        the contact form above and select "Inventory & Partnerships" as the subject — our team will follow
+                        up within 48 hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta-box reveal">
+            <h2>Ready to <span class="gradient-text">Join Us</span>?</h2>
+            <p>Don't wait — the Spring 2026 cohort is filling up fast. Apply in minutes.</p>
+            <a href="proj2-login.html" class="btn btn-primary btn-lg">✦ Create Your Account</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="proj2.html" class="footer-brand" style="text-decoration:none;">APEX AUTO</a>
+            <ul class="footer-links">
+                <li><a href="proj2-about.html">About</a></li>
+                <li><a href="proj2-inventory.html">Inventory</a></li>
+                <li><a href="proj2-brands.html">Brands</a></li>
+                <li><a href="proj2-contact.html">Contact</a></li>
+            </ul>
+            <div class="footer-copy">© 2026 Apex Auto. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script src="proj2.js"></script>
+    <script>
+        // ---- FAQ Accordion ----
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const isOpen = item.classList.contains('open');
+
+                // Close all
+                document.querySelectorAll('.faq-item.open').forEach(i => {
+                    i.classList.remove('open');
+                    i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                });
+
+                // Toggle current
+                if (!isOpen) {
+                    item.classList.add('open');
+                    btn.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        // ---- Contact Form Validation ----
+        const form = document.getElementById('contactForm');
+
+        function setError(inputId, errId, msg) {
+            const input = document.getElementById(inputId);
+            const err = document.getElementById(errId);
+            if (msg) {
+                input.classList.add('invalid');
+                err.textContent = msg;
+            } else {
+                input.classList.remove('invalid');
+                err.textContent = '';
+            }
+            return !msg;
+        }
+
+        function validateForm() {
+            const fn = document.getElementById('firstName').value.trim();
+            const ln = document.getElementById('lastName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value.trim();
+            const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            let valid = true;
+            valid = setError('firstName', 'firstNameErr', fn ? '' : 'First name is required.') && valid;
+            valid = setError('lastName', 'lastNameErr', ln ? '' : 'Last name is required.') && valid;
+            valid = setError('email', 'emailErr', emailRx.test(email) ? '' : 'Please enter a valid email.') && valid;
+            valid = setError('subject', 'subjectErr', subject ? '' : 'Please choose a subject.') && valid;
+            valid = setError('message', 'messageErr', message.length >= 10 ? '' : 'Message must be at least 10 characters.') && valid;
+            return valid;
+        }
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            if (validateForm()) {
+                document.getElementById('contactFormInner').style.display = 'none';
+                const success = document.getElementById('formSuccess');
+                success.style.display = 'block';
+            }
+        });
+
+        // Live clear errors on input
+        ['firstName', 'lastName', 'email', 'message'].forEach(id => {
+            document.getElementById(id).addEventListener('input', () => {
+                document.getElementById(id).classList.remove('invalid');
+                document.getElementById(id + 'Err').textContent = '';
+            });
+        });
+        document.getElementById('subject').addEventListener('change', () => {
+            document.getElementById('subject').classList.remove('invalid');
+            document.getElementById('subjectErr').textContent = '';
+        });
+    </script>
+</body>
+
+</html>
