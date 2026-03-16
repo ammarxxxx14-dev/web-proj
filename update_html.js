@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const htmlPath = 'c:/Users/User/Desktop/Antigrav proj/proj2.html';
+const htmlPath = 'c:/Users/User/Desktop/Antigrav proj/index.html';
 let content = fs.readFileSync(htmlPath, 'utf-8');
 
 // General Branding
@@ -74,4 +74,4 @@ content = content.replace(/✦ Apply for Membership/g, '✦ Contact our Sales Te
 content = content.replace(/<a href="proj2-login.html" class="btn btn-primary btn-lg">✦ Contact our Sales Team<\/a>/g, '<a href="proj2-contact.html" class="btn btn-primary btn-lg">✦ Contact our Sales Team</a>');
 
 fs.writeFileSync(htmlPath, content, 'utf-8');
-console.log("proj2.html Updated successfully.");
+console.log("index.html Updated successfully.");
