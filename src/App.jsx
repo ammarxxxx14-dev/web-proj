@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
 import { Link, Routes, Route, useLocation } from 'react-router-dom';
@@ -74,11 +74,22 @@ const HomePage = () => (
 
 function App() {
   const location = useLocation();
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
 
   return (
-    <main className="relative min-h-screen bg-stone-950">
+    <main className="relative min-h-screen bg-[var(--bg-primary)] transition-colors duration-500">
       <ScrollToTop />
-      <Navbar />
+      <Navbar theme={theme} toggleTheme={toggleTheme} />
       
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>

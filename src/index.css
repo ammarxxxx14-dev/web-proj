@@ -20,14 +20,43 @@
   --color-accent-glow: var(--color-gold-glow);
 }
 
+:root {
+  --bg-primary: #0c0a09;
+  --bg-secondary: #1c1917;
+  --bg-tertiary: #292524;
+  --text-primary: #f5f5f4;
+  --text-secondary: #a8a29e;
+  --text-muted: #57534e;
+  --border-color: rgba(255, 255, 255, 0.05);
+  --glass-bg: rgba(41, 37, 36, 0.3);
+  --nav-bg: rgba(12, 10, 9, 0.7);
+  --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  --grid-color: rgba(255, 255, 255, 0.02);
+}
+
+[data-theme='light'] {
+  --bg-primary: #fafaf9;
+  --bg-secondary: #f5f5f4;
+  --bg-tertiary: #e7e5e4;
+  --text-primary: #1c1917;
+  --text-secondary: #44403c;
+  --text-muted: #a8a29e;
+  --border-color: rgba(0, 0, 0, 0.05);
+  --glass-bg: rgba(255, 255, 255, 0.5);
+  --nav-bg: rgba(250, 250, 249, 0.8);
+  --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+  --grid-color: rgba(0, 0, 0, 0.03);
+}
+
 @layer base {
   body {
-    background-color: var(--color-stone-950);
-    color: var(--color-stone-100);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     font-family: var(--font-plus-jakarta);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
   }
 
   h1, h2, h3, h4 {
@@ -45,25 +74,27 @@
 
 @layer components {
   .glass-card {
-    background: rgba(41, 37, 36, 0.3);
+    background: var(--glass-bg);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    transition: all 0.5s ease;
   }
 
   .glass-nav {
-    background: rgba(12, 10, 9, 0.7);
+    background: var(--nav-bg);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.5s ease;
   }
 
   .btn-elite {
     position: relative;
     padding: 0.75rem 2rem;
     background-color: var(--color-accent);
-    color: var(--color-stone-950);
+    color: #0c0a09;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -101,9 +132,9 @@
   .btn-outline-elite {
     position: relative;
     padding: 0.75rem 2rem;
-    border: 1px solid var(--color-stone-700);
+    border: 1px solid var(--text-muted);
     background-color: transparent;
-    color: var(--color-stone-100);
+    color: var(--text-primary);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -131,7 +162,7 @@
 
 /* Chrome Text Effect */
 .text-chrome {
-  background: linear-gradient(135deg, #f5f5f4 0%, #a8a29e 25%, #78716c 50%, #a8a29e 75%, #f5f5f4 100%);
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 25%, var(--text-muted) 50%, var(--text-secondary) 75%, var(--text-primary) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -147,6 +178,6 @@
 .bg-grid {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
 }
