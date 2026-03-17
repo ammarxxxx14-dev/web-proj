@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import Inventory from './pages/Inventory';
 import Brands from './pages/Brands';
 import Contact from './pages/Contact';
+import About from './pages/About';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
@@ -82,6 +83,7 @@ function App() {
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<About />} />
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/brands" element={<Brands />} />
           <Route path="/contact" element={<Contact />} />
