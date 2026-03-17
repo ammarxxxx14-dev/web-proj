@@ -87,10 +87,18 @@ const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
+      
+      // If it's a container, stagger the children
+      const children = entry.target.querySelectorAll('.reveal');
+      children.forEach((child, index) => {
+        child.style.transitionDelay = `${index * 0.15}s`;
+        child.classList.add('visible');
+      });
+
       revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.15 });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
