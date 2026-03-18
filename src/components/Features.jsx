@@ -27,14 +27,14 @@ const features = [
 
 const Features = () => {
   return (
-    <section id="services" className="py-24 bg-stone-950 relative overflow-hidden">
+    <section id="services" className="py-24 bg-(--bg-primary) relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-20">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false }}
-            className="text-4xl md:text-5xl lg:text-5xl font-outfit font-bold text-white mb-6 uppercase tracking-wider"
+            className="text-4xl md:text-5xl lg:text-5xl font-outfit font-bold text-(--text-primary) mb-6 uppercase tracking-wider"
           >
             THE <span className="text-accent">EXTRAORDINARY</span> STANDARD
           </motion.h2>
@@ -51,13 +51,13 @@ const Features = () => {
               transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="glass-card p-10 group hover:border-accent/40 transition-all duration-500 rounded-4xl"
             >
-              <div className="w-16 h-16 bg-stone-900 rounded-2xl flex items-center justify-center mb-10 group-hover:bg-accent transition-colors duration-500 shadow-xl border border-stone-800 group-hover:border-accent">
+              <div className="w-16 h-16 bg-(--bg-secondary) rounded-2xl flex items-center justify-center mb-10 group-hover:bg-accent transition-colors duration-500 shadow-xl border border-(--border-color) group-hover:border-accent">
                 <feature.icon className="w-8 h-8 text-accent group-hover:text-stone-950 transition-colors duration-500" />
               </div>
-              <h3 className="text-xl font-outfit font-bold text-white mb-4 group-hover:text-accent transition-colors uppercase tracking-wide">
+              <h3 className="text-xl font-outfit font-bold text-(--text-primary) mb-4 group-hover:text-accent transition-colors uppercase tracking-wide">
                 {feature.title}
               </h3>
-              <p className="text-stone-400 leading-relaxed font-plus-jakarta text-sm">
+              <p className="text-(--text-secondary) leading-relaxed font-plus-jakarta text-sm">
                 {feature.description}
               </p>
             </motion.div>

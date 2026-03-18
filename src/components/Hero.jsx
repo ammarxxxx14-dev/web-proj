@@ -57,7 +57,7 @@ const Hero = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-stone-950"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-(--bg-primary)"
     >
       {/* Background Media */}
       <div className="absolute inset-0 z-0">
@@ -70,7 +70,7 @@ const Hero = () => {
             alt="Luxury Car"
             className="w-full h-full object-cover brightness-[0.4]"
           />
-          <div className="absolute inset-0 bg-linear-to-b from-stone-950/20 via-transparent to-stone-950"></div>
+          <div className="absolute inset-0 bg-linear-to-b from-(--bg-primary)/20 via-transparent to-(--bg-primary)"></div>
         </motion.div>
       </div>
 
@@ -91,7 +91,7 @@ const Hero = () => {
           <span className="font-display text-accent text-xs md:text-sm tracking-[0.5em] inline-block mb-6 uppercase">
             ESTABLISHED 1998
           </span>
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-display text-white leading-[0.85] mb-10">
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-display text-(--text-primary) leading-[0.85] mb-10">
             <span className="block text-chrome">SILENT</span>
             <span className="block">POWER</span>
           </h1>
@@ -101,7 +101,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="font-outfit text-lg md:text-xl text-stone-400 max-w-2xl mb-14 leading-relaxed"
+          className="font-outfit text-lg md:text-xl text-(--text-secondary) max-w-2xl mb-14 leading-relaxed"
         >
           Discover a new dimension of luxury. Where every curve is a statement of intent and every mile is a masterpiece of engineering.
         </motion.p>
@@ -118,7 +118,7 @@ const Hero = () => {
             </span>
           </Link>
           
-          <button className="flex items-center gap-4 font-outfit font-bold text-stone-100 hover:text-accent transition-all group">
+          <button className="flex items-center gap-4 font-outfit font-bold text-(--text-primary) hover:text-accent transition-all group">
             <div className="w-14 h-14 rounded-full border border-stone-800 flex items-center justify-center group-hover:border-accent group-hover:shadow-[0_0_20px_var(--color-accent-glow)] transition-all bg-stone-900/50 backdrop-blur-sm">
               <Play className="w-5 h-5 fill-current ml-1" />
             </div>

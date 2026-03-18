@@ -52,7 +52,7 @@ const perks = [
 
 const Brands = () => {
   return (
-    <div className="bg-stone-950 min-h-screen pt-32 pb-20 overflow-hidden">
+    <div className="bg-(--bg-primary) min-h-screen pt-32 pb-20 overflow-hidden">
       <div className="container mx-auto px-6">
         {/* Hero */}
         <div className="text-center mb-24">
@@ -67,7 +67,7 @@ const Brands = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-6xl md:text-8xl font-display text-white mb-8"
+            className="text-6xl md:text-8xl font-display text-(--text-primary) mb-8"
           >
             ICONIC <span className="text-chrome">BRANDS</span>
           </motion.h1>
@@ -75,7 +75,7 @@ const Brands = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-stone-400 font-outfit text-xl max-w-2xl mx-auto"
+            className="text-(--text-secondary) font-outfit text-xl max-w-2xl mx-auto"
           >
             Representing the world's most prestigious automotive marks. Where legacy meets innovation.
           </motion.p>
@@ -100,16 +100,16 @@ const Brands = () => {
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-stone-950/60 to-transparent"></div>
                 <div className="absolute bottom-8 left-8">
-                   <h3 className="text-3xl font-display text-white mb-2">{brand.name}</h3>
+                   <h3 className="text-3xl font-display text-(--text-primary) mb-2">{brand.name}</h3>
                    <div className="text-accent font-outfit font-bold tracking-[0.2em] uppercase">{brand.model}</div>
                 </div>
               </div>
               
               <div className="text-center max-w-md px-4">
-                <p className="text-stone-400 font-plus-jakarta leading-relaxed mb-8">
+                <p className="text-(--text-secondary) font-plus-jakarta leading-relaxed mb-8">
                   {brand.description}
                 </p>
-                <button className="flex items-center gap-2 font-display text-xs text-stone-100 hover:text-accent transition-colors mx-auto group/btn">
+                <button className="flex items-center gap-2 font-display text-xs text-(--text-primary) hover:text-accent transition-colors mx-auto group/btn">
                   EXPLORE BRAND <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                 </button>
               </div>
@@ -120,7 +120,7 @@ const Brands = () => {
         {/* Owner Perks */}
         <div className="mb-20">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-outfit font-bold text-white mb-6 uppercase tracking-wider">
+            <h2 className="text-4xl md:text-5xl font-outfit font-bold text-(--text-primary) mb-6 uppercase tracking-wider">
               OWNERSHIP <span className="text-accent">PRIVILEGES</span>
             </h2>
             <div className="w-16 h-1 bg-accent mx-auto"></div>
@@ -136,7 +136,7 @@ const Brands = () => {
                 transition={{ delay: index * 0.1 }}
                 className="glass-card p-10 flex items-start gap-6 group hover:border-accent/40 transition-all rounded-3xl"
               >
-                <div className="w-14 h-14 bg-stone-900 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-accent transition-colors duration-500 shadow-xl border border-stone-800">
+                <div className="w-14 h-14 bg-(--bg-secondary) rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-accent transition-colors duration-500 shadow-xl border border-(--border-color)">
                   <perk.icon className="w-7 h-7 text-accent group-hover:text-stone-950 transition-colors duration-500" />
                 </div>
                 <div>

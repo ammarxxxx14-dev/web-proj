@@ -5,20 +5,20 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="bg-stone-950 pt-24 pb-12 border-t border-stone-900/50">
+    <footer className="bg-(--bg-primary) pt-24 pb-12 border-t border-(--border-color)">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
           {/* Brand Info */}
           <div className="lg:col-span-1">
-            <Link to="/" className="text-3xl font-display text-white tracking-[0.3em] mb-8 inline-block hover:text-accent transition-colors">
+            <Link to="/" className="text-3xl font-display text-(--text-primary) tracking-[0.3em] mb-8 inline-block hover:text-accent transition-colors">
               APEX<span className="text-chrome">AUTO</span>
             </Link>
-            <p className="text-stone-500 font-outfit text-sm leading-relaxed mb-8 max-w-xs">
+            <p className="text-(--text-secondary) font-outfit text-sm leading-relaxed mb-8 max-w-xs">
               Defining the future of luxury automotive acquisition. Part of the Elite Automotive Group.
             </p>
             <div className="flex gap-5">
               {[Facebook, Twitter, Instagram, Youtube].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full border border-stone-800 flex items-center justify-center text-stone-500 hover:border-accent hover:text-accent hover:-translate-y-1 transition-all duration-300 bg-stone-900/30">
+                <a key={i} href="#" className="w-10 h-10 rounded-full border border-(--border-color) flex items-center justify-center text-(--text-secondary) hover:border-accent hover:text-accent hover:-translate-y-1 transition-all duration-300 bg-(--bg-secondary)/30">
                   <Icon className="w-4 h-4" />
                 </a>
               ))}
@@ -33,7 +33,7 @@ const Footer = () => {
                 <li key={item}>
                   <Link 
                     to={`/${item.toLowerCase()}`} 
-                    className="text-stone-400 font-outfit text-sm hover:text-white transition-colors flex items-center gap-2 group"
+                    className="text-(--text-secondary) font-outfit text-sm hover:text-(--text-primary) transition-colors flex items-center gap-2 group"
                   >
                     <span className="w-1.5 h-px bg-accent scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
                     {item}

@@ -9,6 +9,9 @@ import Inventory from './pages/Inventory';
 import Brands from './pages/Brands';
 import Contact from './pages/Contact';
 import About from './pages/About';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import { AuthProvider } from './context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
@@ -35,7 +38,7 @@ const HomePage = () => (
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-display text-white mb-10 leading-tight"
+            className="text-4xl md:text-6xl lg:text-7xl font-display text-(--text-primary) mb-10 leading-tight"
           >
             READY TO <span className="text-chrome">TRANSCEND</span>?
           </motion.h2>
@@ -44,7 +47,7 @@ const HomePage = () => (
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="font-outfit text-xl text-stone-400 max-w-2xl mx-auto mb-16 leading-relaxed"
+            className="font-outfit text-xl text-(--text-secondary) max-w-2xl mx-auto mb-16 leading-relaxed"
           >
             Your journey into the extraordinary begins with a single conversation. 
             Schedule your private viewing or explore our current collection.
@@ -87,25 +90,29 @@ function App() {
   };
 
   return (
-    <main className="relative min-h-screen bg-[var(--bg-primary)] transition-colors duration-500">
-      <ScrollToTop />
-      <Navbar theme={theme} toggleTheme={toggleTheme} />
-      
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/inventory" element={<Inventory />} />
-          <Route path="/brands" element={<Brands />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </AnimatePresence>
+    <AuthProvider>
+      <main className="relative min-h-screen bg-(--bg-primary) transition-colors duration-500">
+        <ScrollToTop />
+        <Navbar theme={theme} toggleTheme={toggleTheme} />
+        
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/inventory" element={<Inventory />} />
+            <Route path="/brands" element={<Brands />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+          </Routes>
+        </AnimatePresence>
 
-      <Footer />
+        <Footer />
 
-      {/* Global Background Grid */}
-      <div className="fixed inset-0 bg-grid opacity-20 pointer-events-none -z-10"></div>
-    </main>
+        {/* Global Background Grid */}
+        <div className="fixed inset-0 bg-grid opacity-20 pointer-events-none -z-10"></div>
+      </main>
+    </AuthProvider>
   );
 }
 

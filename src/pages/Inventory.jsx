@@ -203,7 +203,7 @@ const Inventory = () => {
   });
 
   return (
-    <div className="bg-stone-950 min-h-screen pt-32 pb-20">
+    <div className="bg-(--bg-primary) min-h-screen pt-32 pb-20">
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
@@ -218,7 +218,7 @@ const Inventory = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-display text-white mb-8"
+            className="text-5xl md:text-7xl font-display text-(--text-primary) mb-8"
           >
             AVAILABLE <span className="text-chrome">FLEET</span>
           </motion.h1>
@@ -226,7 +226,7 @@ const Inventory = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-stone-400 font-outfit text-lg max-w-2xl mx-auto"
+            className="text-(--text-secondary) font-outfit text-lg max-w-2xl mx-auto"
           >
             Explore our meticulously curated selection of world-class automobiles. Each vehicle is verified for absolute perfection.
           </motion.p>
@@ -257,7 +257,7 @@ const Inventory = () => {
               placeholder="Search Collection..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-stone-900/50 border border-stone-800 rounded-full px-12 py-3 text-stone-100 placeholder:text-stone-600 focus:outline-none focus:border-accent transition-colors font-outfit"
+              className="w-full bg-(--bg-secondary)/50 border border-(--border-color) rounded-full px-12 py-3 text-(--text-primary) placeholder:text-(--text-muted) focus:outline-none focus:border-accent transition-colors font-outfit"
             />
           </div>
         </div>
@@ -298,7 +298,7 @@ const Inventory = () => {
                           {item.status}
                         </span>
                       </div>
-                      <h3 className="text-2xl font-outfit font-bold text-white mb-3 group-hover:text-accent transition-colors">
+                      <h3 className="text-2xl font-outfit font-bold text-(--text-primary) mb-3 group-hover:text-accent transition-colors">
                         {item.name}
                       </h3>
                       <div className="flex flex-wrap gap-4 mb-6">
@@ -315,13 +315,13 @@ const Inventory = () => {
                           {item.drive}
                         </div>
                       </div>
-                      <p className="text-stone-400 text-sm leading-relaxed font-plus-jakarta line-clamp-2 mb-6">
+                      <p className="text-(--text-secondary) text-sm leading-relaxed font-plus-jakarta line-clamp-2 mb-6">
                         {item.description}
                       </p>
                     </div>
 
                     <div className="flex items-center justify-between mt-auto">
-                      <div className="text-xl font-outfit font-bold text-white">
+                      <div className="text-xl font-outfit font-bold text-(--text-primary)">
                         {item.price}
                       </div>
                       <button className="flex items-center gap-2 font-display text-[10px] text-stone-300 hover:text-accent transition-colors group/btn">

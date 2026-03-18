@@ -44,7 +44,7 @@ const About = () => {
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-display text-white mb-10 leading-tight"
+            className="text-5xl md:text-7xl lg:text-8xl font-display text-(--text-primary) mb-10 leading-tight"
           >
             DEFINING THE <span className="text-chrome">PINNACLE</span> OF AUTOMOTIVE LUXURY.
           </motion.h1>
@@ -52,7 +52,7 @@ const About = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="font-outfit text-xl text-stone-400 leading-relaxed max-w-2xl"
+            className="font-outfit text-xl text-(--text-secondary) leading-relaxed max-w-2xl"
           >
             Founded on the principles of speed, style, and sophistication, APEX AUTO has evolved from a boutique showroom into a global destination for the world's most discerning automotive collectors.
           </motion.p>
@@ -60,7 +60,7 @@ const About = () => {
       </section>
 
       {/* Philosophy Section */}
-      <section className="relative py-32 overflow-hidden border-y border-stone-900 bg-stone-950/50">
+      <section className="relative py-32 overflow-hidden border-y border-(--border-color) bg-(--bg-primary)/50">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <motion.div
@@ -79,8 +79,8 @@ const About = () => {
             </motion.div>
 
             <div>
-              <h2 className="text-4xl md:text-5xl font-display text-white mb-8">Beyond the Machine</h2>
-              <div className="space-y-6 text-stone-400 font-outfit text-lg leading-relaxed">
+              <h2 className="text-4xl md:text-5xl font-display text-(--text-primary) mb-8">Beyond the Machine</h2>
+              <div className="space-y-6 text-(--text-secondary) font-outfit text-lg leading-relaxed">
                 <p>
                   At APEX AUTO, we believe a car is more than a means of transportation. It is an extension of one's identity, a triumph of engineering, and a working piece of art.
                 </p>

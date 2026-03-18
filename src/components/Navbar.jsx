@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, User, Search, Sun, Moon } from 'lucide-react';
+import { Menu, X, User, Search, Sun, Moon, LogOut } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const Navbar = ({ theme, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, logout } = useAuth();
   const location = useLocation();
 
   useEffect(() => {
@@ -57,13 +59,23 @@ const Navbar = ({ theme, toggleTheme }) => {
             {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
           </button>
 
-          <button className="text-stone-400 hover:text-accent transition-colors ml-[-20px]">
-            <Search className="w-5 h-5" />
-          </button>
-          
-          <button className="btn-elite px-6 py-2 text-[10px]">
-            Join Now
-          </button>
+          {user ? (
+            <div className="flex items-center gap-6">
+              <span className="text-[10px] uppercase tracking-widest text-(--text-secondary) font-display hidden xl:block">
+                Welcome, {user.email.split('@')[0]}
+              </span>
+              <button 
+                onClick={logout}
+                className="btn-outline-elite px-6 py-2 text-[10px] flex items-center gap-2"
+              >
+                <LogOut className="w-3.5 h-3.5" /> Sign Out
+              </button>
+            </div>
+          ) : (
+            <Link to="/login" className="btn-elite px-8 py-2 text-[10px]">
+              Join Now
+            </Link>
+          )}
         </div>
 
         {/* Mobile Toggle */}
@@ -105,9 +117,25 @@ const Navbar = ({ theme, toggleTheme }) => {
                   {link.name}
                 </Link>
               ))}
-              <button className="btn-elite w-full py-4 text-xs mt-4">
-                Join Now
-              </button>
+              {user ? (
+                <button 
+                  onClick={() => {
+                    logout();
+                    setIsMenuOpen(false);
+                  }}
+                  className="btn-outline-elite w-full py-4 text-xs mt-4 flex items-center justify-center gap-2"
+                >
+                  <LogOut className="w-4 h-4" /> Sign Out
+                </button>
+              ) : (
+                <Link 
+                  to="/login"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="btn-elite w-full py-4 text-xs mt-4"
+                >
+                  Join Now
+                </Link>
+              )}
             </div>
           </motion.div>
         )}

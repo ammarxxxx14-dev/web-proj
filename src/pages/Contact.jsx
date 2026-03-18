@@ -36,7 +36,7 @@ const Contact = () => {
   ];
 
   return (
-    <div className="bg-stone-950 min-h-screen pt-32 pb-20">
+    <div className="bg-(--bg-primary) min-h-screen pt-32 pb-20">
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-20">
@@ -51,7 +51,7 @@ const Contact = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-6xl md:text-8xl font-display text-white mb-8"
+            className="text-6xl md:text-8xl font-display text-(--text-primary) mb-8"
           >
             ELITE <span className="text-chrome">CONCIERGE</span>
           </motion.h1>
@@ -59,7 +59,7 @@ const Contact = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-stone-400 font-outfit text-lg max-w-2xl mx-auto"
+            className="text-(--text-secondary) font-outfit text-lg max-w-2xl mx-auto"
           >
             Experience personalized service tailored to your automotive aspirations. Our team of specialists is ready to assist you.
           </motion.p>
@@ -72,21 +72,21 @@ const Contact = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <h2 className="text-3xl font-outfit font-bold text-white mb-10 uppercase tracking-wider">
+            <h2 className="text-3xl font-outfit font-bold text-(--text-primary) mb-10 uppercase tracking-wider">
               CONNECT <span className="text-accent">INSTANTLY</span>
             </h2>
             
             <div className="space-y-8 mb-16">
               {contactInfo.map((info, index) => (
                 <div key={index} className="flex items-start gap-6 group">
-                  <div className="w-14 h-14 bg-stone-900 rounded-2xl flex items-center justify-center shrink-0 border border-stone-800 group-hover:border-accent transition-colors duration-500">
+                  <div className="w-14 h-14 bg-(--bg-secondary) rounded-2xl flex items-center justify-center shrink-0 border border-(--border-color) group-hover:border-accent transition-colors duration-500">
                     <info.icon className="w-6 h-6 text-accent" />
                   </div>
                   <div>
                     <h4 className="text-stone-500 font-display text-[10px] tracking-[0.3em] uppercase mb-1">
                       {info.title}
                     </h4>
-                    <div className="text-xl font-outfit font-bold text-white mb-1">
+                    <div className="text-xl font-outfit font-bold text-(--text-primary) mb-1">
                       {info.value}
                     </div>
                     <div className="text-stone-600 text-sm font-plus-jakarta">
@@ -100,7 +100,7 @@ const Contact = () => {
             <div className="glass-card p-8 rounded-3xl border border-stone-800/50">
               <div className="flex items-center gap-4 mb-4">
                 <Clock className="w-5 h-5 text-accent" />
-                <h4 className="font-outfit font-bold text-white uppercase tracking-wider">Business Hours</h4>
+                <h4 className="font-outfit font-bold text-(--text-primary) uppercase tracking-wider">Business Hours</h4>
               </div>
               <div className="grid grid-cols-2 gap-4 text-sm font-plus-jakarta text-stone-400">
                 <div>Monday - Friday</div>
